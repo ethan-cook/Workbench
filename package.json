@@ -1,10 +1,14 @@
 {
   "name": "workbench",
+  "productName": "Workbench",
   "version": "0.0.1",
   "description": "A simple desktop app built on Electron to allow end-users to combine their suite of tools into one location",
   "main": "app.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/WorkbenchLogo.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . workbench --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/WorkbenchLogo.ico --prune=true --out=release-builds --version-string.CompanyName=Define LLC --version-string.FileDescription=Combine your suite of tools in one --version-string.ProductName=\"Workbench\"",    
+    "package-linux": "electron-packager . workbench --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/WorkbenchLogo.png --prune=true --out=release-builds"
   },
   "repository": {
     "type": "git",
@@ -17,6 +21,8 @@
   },
   "homepage": "https://github.com/ethan-cook/Workbench#readme",
   "devDependencies": {
-    "electron": "^7.1.7"
-  }
+    "electron": "^7.1.7",
+    "electron-packager": "^14.1.1"
+  },
+  "dependencies": {}
 }

@@ -2,7 +2,7 @@
 const {app} = require('electron');
 
 //Import Window
-const Window =  require('./Window')
+const Window =  require('./src/Window')
 
 function main() {
     let WorkbenchWindow = new Window({file: 'index.html'});
