@@ -1,0 +1,22 @@
+{
+  "name": "workbench",
+  "version": "0.0.1",
+  "description": "A simple desktop app built on Electron to allow end-users to combine their suite of tools into one location",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ethan-cook/Workbench.git"
+  },
+  "author": "Ethan Cook",
+  "license": "GNU",
+  "bugs": {
+    "url": "https://github.com/ethan-cook/Workbench/issues"
+  },
+  "homepage": "https://github.com/ethan-cook/Workbench#readme",
+  "devDependencies": {
+    "electron": "^7.1.7"
+  }
+}
