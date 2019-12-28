@@ -1,2 +1,2 @@
 react: npm start
-electron: node src/Workbench/Start
+electron: node src/Workbench/Core/Start

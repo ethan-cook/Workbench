@@ -4,14 +4,16 @@
   "version": "0.1.0",
   "description": "A simple desktop app built on Electron to allow end-users to combine their suite of tools into one location",
   "private": true,
-  "main": "src/Workbench/Main.js",
+  "main": "src/Workbench/Core/Main.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "electron": "electron .",
-    "dev": "nf start"
+    "dev": "nf start",
+    "pack": "electron-builder",
+    "preelectron-pack": "yarn build"
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,23 @@
     "url": "https://github.com/ethan-cook/Workbench/issues"
   },
   "homepage": "./",
+  "build": {
+    "appId": "nonExistentID",
+    "productName": "Workbench",
+    "copyright": "Copyright © 2019 ${author}",
+    "extends": null,
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "files": [
+      "build/**/*",
+      "node_modules/**/*",
+      "src/Workbench/Core/Main.js"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -48,6 +67,8 @@
   },
   "devDependencies": {
     "electron": "^7.1.7",
-    "foreman": "^3.0.1"
+    "electron-builder": "^21.2.0",
+    "foreman": "^3.0.1",
+    "typescript": "^3.7.4"
   }
 }
