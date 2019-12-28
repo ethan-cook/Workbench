@@ -1,28 +1,53 @@
 {
   "name": "workbench",
   "productName": "Workbench",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A simple desktop app built on Electron to allow end-users to combine their suite of tools into one location",
-  "main": "app.js",
+  "private": true,
+  "main": "src/Workbench/Main.js",
   "scripts": {
-    "start": "electron .",
-    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/WorkbenchLogo.icns --prune=true --out=release-builds",
-    "package-win": "electron-packager . workbench --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/WorkbenchLogo.ico --prune=true --out=release-builds --version-string.CompanyName=Define LLC --version-string.FileDescription=Combine your suite of tools in one --version-string.ProductName=\"Workbench\"",    
-    "package-linux": "electron-packager . workbench --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/WorkbenchLogo.png --prune=true --out=release-builds"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron": "electron .",
+    "dev": "nf start"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ethan-cook/Workbench.git"
   },
   "author": "Ethan Cook",
-  "license": "GNU",
+  "license": "GPU-3.0-or-later",
   "bugs": {
     "url": "https://github.com/ethan-cook/Workbench/issues"
   },
-  "homepage": "https://github.com/ethan-cook/Workbench#readme",
+  "homepage": "./",
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.4.0",
+    "@testing-library/user-event": "^7.2.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "3.3.0"
+  },
   "devDependencies": {
     "electron": "^7.1.7",
-    "electron-packager": "^14.1.1"
-  },
-  "dependencies": {}
+    "foreman": "^3.0.1"
+  }
 }
