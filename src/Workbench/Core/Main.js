@@ -15,9 +15,9 @@ function createWorkbenchWindow()
     WorkbenchWindow = new BrowserWindow({width: 1280, height: 720, icon: path.join(__dirname, '/../public/icons/WorkbenchLogo.ico')});
 
     //Connect to React
-    const StartURL = process.env.ELECTRON_START_URL || url.format({
-        pathname: path.join(__dirname, '/../build/index.html'),
-        protocol: 'file',
+    const StartURL = url.format({
+        pathname: path.join(__dirname, '/../../../build/index.html'),
+        protocol: 'file:',
         slashes: true
     });
 
