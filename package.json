@@ -11,7 +11,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "electron": "electron .",
-    "dev": "nf start",
     "electron-pack": "electron-builder",
     "preelectron-pack": "yarn build"
   },
@@ -62,13 +61,14 @@
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
     "react": "^16.12.0",
+    "react-app-rewired": "^2.1.5",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0"
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.3.0",
+    "typescript": "^3.7.4"
   },
   "devDependencies": {
     "electron": "^7.1.7",
-    "electron-builder": "^21.2.0",
-    "foreman": "^3.0.1",
-    "typescript": "^3.7.4"
+    "electron-builder": "^21.2.0"
   }
 }

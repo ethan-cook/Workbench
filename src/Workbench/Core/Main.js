@@ -1,7 +1,9 @@
-const {app, BrowserWindow, Menu, ipcMain} = require('electron');
+const {app, BrowserWindow, Menu, ipcMain, remote} = require('electron');
 
 const path = require('path');
 const url = require('url');
+
+const Modules = require('../Modules/Modules');
 
 // Global reference to the main application window
 let WorkbenchWindow;
@@ -12,14 +14,26 @@ process.env.NODE_ENV = 'development';
 function createWorkbenchWindow()
 {
     //Create new Workbench window
-    WorkbenchWindow = new BrowserWindow({width: 1280, height: 720, icon: path.join(__dirname, '/../public/icons/WorkbenchLogo.ico')});
-
-    //Connect to React
-    const StartURL = url.format({
-        pathname: path.join(__dirname, '/../../../build/index.html'),
-        protocol: 'file:',
-        slashes: true
+    WorkbenchWindow = new BrowserWindow({
+        width: 1280, 
+        height: 720, 
+        icon: path.join(__dirname, '/../../../public/icons/WorkbenchLogo.ico'),
+        title: "Workbench",
+        webPreferences: {
+            nodeIntegration: true
+        }
     });
+
+    //Connect to React  
+    const StartURL = 'http://localhost:3000';
+    if (process.env.NODE_ENV === 'production')
+    {
+        StartURL = url.format({
+            pathname: path.join(__dirname, '/../../../build/index.html'),
+            protocol: 'file',
+            slashes: true
+        });
+    }
 
     //Load the React page
     WorkbenchWindow.loadURL(StartURL);
@@ -61,10 +75,10 @@ const WorkbenchMenuTemplate = [
         label: 'File',
         submenu: [
             {
-                label: 'Menu 1'
-            },
-            {
-                label: 'Menu 2'
+                label: 'Load Modules',
+                click() {
+                    Modules.createModuleWindow();
+                }
             },
             {
                 label: 'Quit',
@@ -96,3 +110,8 @@ if (process.env.NODE_ENV !== 'production')
         ]
     })
 }
+
+ipcMain.on('Modules:LoadModule', (event, ModuleLoading) => {
+    //Tell the home menu that we loaded a new module
+    WorkbenchWindow.webContents.send('Modules:ModuleLoaded', ModuleLoading);
+})
