@@ -18,7 +18,7 @@ Not using the chat? Don't load the module and the features won't be there!
 
 
 ## Contributing
-I am constantly looking for help with finding fixes, and coming up with ideas for new features and modules!
+I am constantly looking for help with finding bugs, and coming up with ideas for new features and modules!
 
 ## License
 [GNU GPL v3.0](https://choosealicense.com/licenses/gpl-3.0/)
