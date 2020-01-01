@@ -23,7 +23,7 @@ class Modules extends Component {
                 <h4>Current Loaded Modules: {this.state.LoadedModules.length}</h4>
                 <ul>
                     {this.state.LoadedModules.map(ModuleLoaded => (
-                        <li key={ModuleLoaded.id}>{ModuleLoaded.text}</li>
+                        <a href={ModuleLoaded.url}><li key={ModuleLoaded.id}>{ModuleLoaded.text}</li></a>
                     ))}
                 </ul>
             </div>
