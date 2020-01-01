@@ -163,17 +163,36 @@ function LoadNewModule()
 
             //Parse the JSON from the module file selected
             var ModuleJSON = JSON.parse(data);
-            console.log(ModuleJSON);
-            //Create the Module structure from the file data
-            const NewModule = {
-                text: ModuleJSON.name,
-                url: ModuleJSON.url,
-                id: Date.now()
-            };
-            //Pass the new module to the LoadedModules array
-            LoadedModules.push(NewModule);
-            //Notify React of the new module
-            WorkbenchWindow.webContents.send('Modules:ModuleLoaded', [NewModule]);
+
+            if (ModuleJSON.single)
+            {
+                //Create the Module structure from the file data
+                const NewModule = {
+                    text: ModuleJSON.name,
+                    url: ModuleJSON.url,
+                    id: Date.now()
+                };
+                //Pass the new module to the LoadedModules array
+                LoadedModules.push(NewModule);
+                //Notify React of the new module
+                WorkbenchWindow.webContents.send('Modules:ModuleLoaded', [NewModule]);
+            }
+            else
+            {
+                ModuleJSON.modules.forEach((Module) =>
+                {
+                    //Create the Module structure from the file data
+                    const NewModule = {
+                        text: Module.name,
+                        url: Module.url,
+                        id: Date.now()
+                    };
+                    //Pass the new module to the LoadedModules array
+                    LoadedModules.push(NewModule);
+                    //Notify React of the new module
+                    WorkbenchWindow.webContents.send('Modules:ModuleLoaded', [NewModule]);
+                });
+            }
 
             //Update the modules.json file with the new contents of LoadedModules
             fs.writeFile('modules.json', JSON.stringify(LoadedModules), (error) => {
